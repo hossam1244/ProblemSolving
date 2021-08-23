@@ -23,6 +23,10 @@ public class JewelsandStones {
         return count;
     }
 
+    static public int numJewelsInStonesSecondSolution(String jewels,String stones) {
+        return stones.replaceAll("[^" + jewels + "]", "").length();
+    }
+
 
 
 }
