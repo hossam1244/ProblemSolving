@@ -1,6 +1,6 @@
 package array
 
 fun main() {
-
+    
 }
 

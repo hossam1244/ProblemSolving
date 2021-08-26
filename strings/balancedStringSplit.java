@@ -13,7 +13,6 @@ public class balancedStringSplit {
             count += c == 'R'? 1 : -1;
             if ( count == 0) ++res;
         }
-        System.out.print("test");
         return res;
     }
 }
