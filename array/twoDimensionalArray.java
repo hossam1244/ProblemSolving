@@ -1,6 +1,8 @@
 package array;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
  
 class GFG {
      
@@ -11,6 +13,9 @@ static int C = 5;
 // hour glass in ar[][]
 static int findMaxSum(int [][]mat)
 {
+
+   
+    
     if (R < 3 || C < 3)
         return -1;
  
@@ -54,4 +59,10 @@ static int findMaxSum(int [][]mat)
                                 + res);
     }
      
+    /**
+     *  // if you wanan create list of list --> similar to 2d Arrays
+         List<List<Integer>> list = new ArrayList<>();
+         List<Integer> firstRow = new ArrayList<>();
+        list.add(firstRow);
+     */
 }
