@@ -1,7 +1,7 @@
 
 package linkedlist;
- 
 
+import java.util.HashSet;
 
 public class removeDuplicates {
     public static void main(String[] args) {
@@ -21,12 +21,15 @@ public class removeDuplicates {
         deleteDuplicates(head);
 
     }
-    static public void deleteDuplicates(ListNode head) {
-         while (head != null) {
-             System.out.println(head.val);
-              head = head.next;
-         }
-      
+    static public ListNode deleteDuplicates(ListNode head) {
+        if(head==null || head.next==null) return head;
+
+       ListNode temp = head;
+       while(temp.next != null) {
+        if (temp.val == temp.next.val) temp.next = temp.next.next;
+        else temp = temp.next;   
+      }
+      return head;
     }
 
   
