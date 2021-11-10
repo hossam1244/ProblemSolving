@@ -17,6 +17,7 @@ public class LeftRotation {
         // Write your code here
         List<Integer> newList = new ArrayList<>();
         newList.addAll(arr);
+        
 
         for (int i=1; i<=d; i++) {
             System.out.println(i);
