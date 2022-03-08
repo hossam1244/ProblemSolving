@@ -1,14 +1,14 @@
 package random
 
 fun main() {
-searchRange(nums, target)
+    searchRange(nums, target)
 }
 
-var nums = intArrayOf(5,7,7,8,8,10)
+var nums = intArrayOf(5, 7, 7, 8, 8, 10)
 var target = 8
 
 fun searchRange(nums: IntArray, target: Int): IntArray {
-    var result: IntArray = intArrayOf(-1,-1)
+    var result: IntArray = intArrayOf(-1, -1)
     calc_nums(nums, result, true, target)
     calc_nums(nums, result, false, target)
 
@@ -21,20 +21,20 @@ fun calc_nums(nums: IntArray, result: IntArray, goLeft: Boolean, t: Int) {
 
     while (left <= right) {
         var midd: Int = left + (right - left) / 2
-        if(nums[midd] > t) {
+        if (nums[midd] > t) {
             right = midd - 1
-        } else if(nums[midd] < t) {
+        } else if (nums[midd] < t) {
             left = midd + 1
         } else {
-            if(goLeft == true) {
-                if(midd == 0 || nums[midd - 1] != t) {
+            if (goLeft == true) {
+                if (midd == 0 || nums[midd - 1] != t) {
                     result[0] = midd
                     return
                 } else {
                     right = midd - 1
                 }
             } else {
-                if(midd == nums.size - 1 || nums[midd + 1] != t) {
+                if (midd == nums.size - 1 || nums[midd + 1] != t) {
                     result[1] = midd
                     return
                 } else {
@@ -43,4 +43,26 @@ fun calc_nums(nums: IntArray, result: IntArray, goLeft: Boolean, t: Int) {
             }
         }
     }
+}
+
+
+var singleNumber = intArrayOf(2, 2, 1)
+
+fun singleNumber(nums: IntArray): Int {
+    val hashmap = hashMapOf<Int, Int>()
+    for (num in nums) {
+        if (hashmap.containsKey(num)) {
+            hashmap[num] = hashmap.getValue(num) + 1
+        } else {
+            hashmap[num] = 1
+        }
+    }
+
+    for ((key,value) in hashmap) {
+        if (value == 1)
+            return key
+    }
+
+    return 0
+
 }
