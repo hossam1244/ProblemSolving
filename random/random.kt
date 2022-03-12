@@ -1,7 +1,8 @@
 package random
 
 fun main() {
-    searchRange(nums, target)
+   // searchRange(nums, target)
+    topKFrequent()
 }
 
 var nums = intArrayOf(5, 7, 7, 8, 8, 10)
@@ -66,3 +67,41 @@ fun singleNumber(nums: IntArray): Int {
     return 0
 
 }
+
+
+
+fun topKFrequent() : IntArray{
+    var nums = intArrayOf(1,1,1,2,2,3)
+    var k = 2
+
+    val map = mutableMapOf<Int,Int>()
+
+    nums.forEach { map[it] = map.getOrDefault(it, 0) + 1 }
+
+    for ((i,v) in map) {
+        print("index $i = " + " $v")
+    }
+    val pairs = map.toList().sortedByDescending { it.second }
+    println()
+    for (i in pairs) {
+        print(i)
+    }
+
+    val uniques = mutableListOf<Int>()
+
+
+
+    pairs.forEach {
+        while(uniques.size < k) {
+            uniques.add(it.first)
+            break
+        }
+    }
+
+    return uniques.toIntArray()
+
+
+
+
+}
+
