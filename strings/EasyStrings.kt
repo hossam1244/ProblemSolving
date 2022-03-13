@@ -2,7 +2,8 @@ package strings
 
 fun main() {
     // minimumNumber(n = 3, password = password)
-    reverseString()
+   // reverseString()
+    fizzBuzz()
 }
 
 
@@ -51,4 +52,24 @@ fun reverseString(): Unit {
 
 
     print(s)
+}
+
+
+fun fizzBuzz(): List<String> {
+var n = 3
+val list = mutableListOf<String>()
+for (i in 1..n) {
+    if (i % 3 == 0 && i % 5 == 0) {
+        list.add("FizzBuzz")
+    } else if (i % 3 == 0) {
+        list.add("Fizz")
+    } else if (i % 5 == 0) {
+        list.add("Buzz")
+    } else {
+        list.add("$i")
+    }
+}
+
+    return list
+
 }
