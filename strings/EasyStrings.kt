@@ -105,6 +105,7 @@ fun isAnagram(): Boolean {
     var s = "aacc"
     var t = "ccac"
 
+
     if (s.length != t.length)
         return false
 
@@ -129,8 +130,20 @@ fun isAnagram(): Boolean {
     }
 
     println(map)
-
     return true
+
+
+    // Solution 2
+    //  s.toCharArray().sortedArray().contentEquals(t.toCharArray().sortedArray())
+
+    // Solution 3
+//    val tArr = Array(26) {0}
+
+//    t.forEach { tArr[it - 'a']++ }
+//    s.forEach { tArr[it - 'a']-- }
+//    return tArr.all {it == 0}
+//
+
 
 }
 
