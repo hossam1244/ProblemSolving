@@ -1,9 +1,13 @@
 package strings
 
+import java.util.*
+
 fun main() {
     // minimumNumber(n = 3, password = password)
    // reverseString()
-    fizzBuzz()
+   // fizzBuzz()
+    // print(isPalindrome())
+    print(isAnagram())
 }
 
 
@@ -73,3 +77,61 @@ for (i in 1..n) {
     return list
 
 }
+
+
+fun isPalindrome(): Boolean {
+    var s = "A man, a plan, a canal: Panama"
+    if (s.isBlank())
+        return true
+    var new = s.filter { it.isLetterOrDigit() }.lowercase(Locale.getDefault())
+
+
+    var pointerLeft = 0
+    var pointerRight = new.length - 1
+    while (pointerLeft < pointerRight) {
+        if (new[pointerLeft] != new[pointerRight]) {
+            return false
+        }
+        else  {
+            pointerLeft++
+            pointerRight--
+        }
+    }
+
+    return true
+}
+
+fun isAnagram(): Boolean {
+    var s = "aacc"
+    var t = "ccac"
+
+    if (s.length != t.length)
+        return false
+
+    val map = mutableMapOf<Char,Int>()
+
+    for (i in s) {
+        if (map[i] == null)
+        map[i] =  1
+        else
+        map[i] = map.getValue(i) + 1
+    }
+    print(map)
+
+    for (i in t) {
+        if (map[i] == null || map.getValue(i) < 0) {
+            return false
+        } else  {
+            map[i] = map.getValue(i) - 1
+            if (map.getValue(i) < 0)
+                return false
+        }
+    }
+
+    println(map)
+
+    return true
+
+}
+
+
