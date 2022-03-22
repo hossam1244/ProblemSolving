@@ -1,6 +1,7 @@
 package strings
 
 import java.lang.Exception
+import java.lang.StringBuilder
 import java.util.*
 
 fun main() {
@@ -10,7 +11,9 @@ fun main() {
     // print(isPalindrome())
     // print(isAnagram())
     // titleToNumber()
-    romanToInt()
+    // romanToInt()
+    //replaceDigits()
+    firstUniqChar()
 }
 
 
@@ -190,7 +193,7 @@ fun romanToInt(): Int {
 
     for (i in s.indices) {
         try {
-            if ((i + 1 < map.size - 1) &&  (map.getValue(s[i]) < map.getValue(s[i + 1])) ) {
+            if ((i + 1 < map.size - 1) && (map.getValue(s[i]) < map.getValue(s[i + 1]))) {
                 res -= map.getValue(s[i])
             } else {
                 res += map.getValue(s[i])
@@ -206,8 +209,6 @@ fun romanToInt(): Int {
     return res
 
 
-
-
 //    var number = 0
 //    var last = 1000
 //    s.forEach {
@@ -220,5 +221,48 @@ fun romanToInt(): Int {
 //    print(number)
 //    return number
 }
+
+
+fun replaceDigits(): String {
+
+    var s = "a1c1e1"
+
+
+    var newString = StringBuilder()
+
+    for (i in s.indices) {
+        if (s[i].isDigit()) {
+            newString.append(s[i - 1] + s[i].toInt() - '0'.toInt())
+        } else {
+            newString.append(s[i])
+
+        }
+    }
+    print(newString.toString())
+    return newString.toString()
+}
+
+fun firstUniqChar() : Int{
+    // l = 1  e = 3 t = 1 c = 1 o = 1 d = 1
+  val  s = "aabb"
+  val map = mutableMapOf<Char,Int>()
+  s.forEach {
+      if (map[it] != null)
+      map[it] =+ map.getValue(it) + 1
+      else
+      map[it] = 1
+  }
+
+    for ((key,value) in map) {
+        if (value == 1) {
+            print(s.indexOf(key))
+            return s.indexOf(key)
+            break
+        }
+    }
+    return -1
+
+}
+
 
 
