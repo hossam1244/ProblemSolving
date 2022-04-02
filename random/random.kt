@@ -2,7 +2,8 @@ package random
 
 fun main() {
    // searchRange(nums, target)
-    topKFrequent()
+   // topKFrequent()
+    search(nums = intArrayOf(-1,0,3,5,9,12), target = 9)
 }
 
 var nums = intArrayOf(5, 7, 7, 8, 8, 10)
@@ -99,6 +100,33 @@ fun topKFrequent() : IntArray{
     }
 
     return uniques.toIntArray()
+
+
+
+
+}
+
+
+fun search(nums: IntArray, target: Int): Int {
+    // binary search -1,0,3,5,9,12, target = 9
+    // return the index
+    var l = 0
+    var r = nums.size - 1
+
+    while (l <= r) {
+        val medium = l + (r - l) / 2
+        if (nums[medium] == target) {
+            return medium
+        }
+
+        if (nums[medium] < target) {
+            l = medium + 1
+        } else {
+            r = medium - 1
+        }
+    }
+
+    return -1
 
 
 
