@@ -1,9 +1,11 @@
 package random
 
 fun main() {
-   // searchRange(nums, target)
-   // topKFrequent()
-    search(nums = intArrayOf(-1,0,3,5,9,12), target = 9)
+    // searchRange(nums, target)
+    // topKFrequent()
+    //  search(nums = intArrayOf(-1,0,3,5,9,12), target = 9)
+    // sortColors(nums = intArrayOf(2,0,2,1,1,0))
+    intersect(nums1 = intArrayOf(4, 9, 5), nums2 = intArrayOf(9, 4, 9, 8, 4))
 }
 
 var nums = intArrayOf(5, 7, 7, 8, 8, 10)
@@ -60,7 +62,7 @@ fun singleNumber(nums: IntArray): Int {
         }
     }
 
-    for ((key,value) in hashmap) {
+    for ((key, value) in hashmap) {
         if (value == 1)
             return key
     }
@@ -70,16 +72,15 @@ fun singleNumber(nums: IntArray): Int {
 }
 
 
-
-fun topKFrequent() : IntArray{
-    var nums = intArrayOf(1,1,1,2,2,3)
+fun topKFrequent(): IntArray {
+    var nums = intArrayOf(1, 1, 1, 2, 2, 3)
     var k = 2
 
-    val map = mutableMapOf<Int,Int>()
+    val map = mutableMapOf<Int, Int>()
 
     nums.forEach { map[it] = map.getOrDefault(it, 0) + 1 }
 
-    for ((i,v) in map) {
+    for ((i, v) in map) {
         print("index $i = " + " $v")
     }
     val pairs = map.toList().sortedByDescending { it.second }
@@ -93,15 +94,13 @@ fun topKFrequent() : IntArray{
 
 
     pairs.forEach {
-        while(uniques.size < k) {
+        while (uniques.size < k) {
             uniques.add(it.first)
             break
         }
     }
 
     return uniques.toIntArray()
-
-
 
 
 }
@@ -129,7 +128,47 @@ fun search(nums: IntArray, target: Int): Int {
     return -1
 
 
+}
 
 
+fun sortColors(nums: IntArray): Unit {
+    val n = nums.size - 1
+
+    for (i in 0 until n) {
+        for (j in 0 until n - i) {
+            print("${nums[j].toString() + "" + nums[j + 1] + " - "}")
+        }
+        println()
+    }
+
+
+//    print(nums)
+}
+
+
+fun intersect(nums1: IntArray, nums2: IntArray): IntArray {
+    // nums 1 = [1,2,2,1], nums2 = [2,2]
+    val map = hashMapOf<Int, Int>()
+    val list = mutableListOf<Int>()
+
+    for (i in nums1) {
+        if (map[i] == null) {
+            map[i] = 1
+        } else {
+            map[i] = map[i]!! + 1
+        }
+    }
+
+
+   for (i in nums2) {
+       if (map[i] != null && map[i]!! > 0) {
+           list.add(i)
+           map[i] = map[i]!! - 1
+       }
+   }
+
+    print(list)
+
+    return list.toIntArray()
 }
 
