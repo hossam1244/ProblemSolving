@@ -3,7 +3,7 @@ package linkedlist;
 
 import java.util.HashSet;
 
-public class removeDuplicates {
+public class LinkedListOperations {
     public static void main(String[] args) {
         ListNode head = new ListNode();
         ListNode node1 = new ListNode();
@@ -12,14 +12,14 @@ public class removeDuplicates {
         head.val = 1;
         head.next = node1;
       
-        node1.val = 1;
+        node1.val = 0;
         node1.next = node2;
 
-        node2.val = 2;
+        node2.val = 1;
         node2.next = null;
 
-        deleteDuplicates(head);
-
+       // deleteDuplicates(head);
+        getDecimalValue(head);
     }
     static public ListNode deleteDuplicates(ListNode head) {
         if(head==null || head.next==null) return head;
@@ -30,6 +30,24 @@ public class removeDuplicates {
         else temp = temp.next;   
       }
       return head;
+    }
+
+    static public int getDecimalValue(ListNode head)  {
+
+
+        int result = 0;
+
+        ListNode currentHead = head;
+        while (currentHead != null) {
+            result = result * 2;
+            result = result + currentHead.val;
+            currentHead = currentHead.next;
+        }
+
+        System.out.println(result);
+
+
+        return result;
     }
 
   
