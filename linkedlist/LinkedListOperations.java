@@ -34,7 +34,9 @@ public class LinkedListOperations {
         // deleteDuplicates(head);
         //  getDecimalValue(head);
         //middleNode(head);
-        deleteNode(node1);
+       // deleteNode(node1);
+
+        reverseListWithTwoPointers(head);
 
     }
 
@@ -113,9 +115,38 @@ public class LinkedListOperations {
     }
 
 
-    public ListNode reverseList(ListNode head) {
+   static public ListNode reverseListWithTwoPointers(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+
+
+        // currentPointer = 1 2 3
+        // nxt = 2 3
+        // currentPointer.next -> 1 null
+        // previousPointer -> 1 null
+        //
+        //
+
+        ListNode currentPointer = head;
+        ListNode previousPointer = null;
+
+
+        while (currentPointer != null) {
+            ListNode nxt =  currentPointer.next;
+            currentPointer.next = previousPointer;
+            previousPointer = currentPointer;
+            currentPointer = nxt;
+        }
+
+        return previousPointer;
+
 
     }
+
+
+    // 1 2 3 4
+    // 4 3 2 1
+
 
 
 }
