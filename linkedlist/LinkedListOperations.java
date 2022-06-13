@@ -4,10 +4,18 @@ package linkedlist;
 import java.util.HashSet;
 import java.util.LinkedList;
 
+
+
 public class LinkedListOperations {
     static ListNode head = new ListNode();
 
+
+
+
     public static void main(String[] args) {
+
+
+
 
 
         ListNode node1 = new ListNode();
@@ -27,16 +35,11 @@ public class LinkedListOperations {
         node3.next = null;
 
 
-        //    node2 node3
-//        node3.val = 4;
-//        node3.next = null;
-
         // deleteDuplicates(head);
-        //  getDecimalValue(head);
-        //middleNode(head);
-       // deleteNode(node1);
-
-        reverseListWithTwoPointers(head);
+        // getDecimalValue(head);
+        // middleNode(head);
+        // deleteNode(node1);
+        // reverseListWithTwoPointers(head);
 
     }
 
@@ -115,9 +118,9 @@ public class LinkedListOperations {
     }
 
 
-   static public ListNode reverseListWithTwoPointers(ListNode head) {
-        if (head == null || head.next == null)
-            return head;
+    static public void reverseListWithTwoPointers(ListNode head) {
+//        if (head == null || head.next == null)
+//            return head;
 
 
         // currentPointer = 1 2 3
@@ -127,18 +130,23 @@ public class LinkedListOperations {
         //
         //
 
-        ListNode currentPointer = head;
-        ListNode previousPointer = null;
+        ListNode prev = null;
 
 
-        while (currentPointer != null) {
-            ListNode nxt =  currentPointer.next;
-            currentPointer.next = previousPointer;
-            previousPointer = currentPointer;
-            currentPointer = nxt;
+        while (head != null) {
+            ListNode nxt = head.next;
+            head.next = prev;
+            prev = head;
+            head = nxt;
         }
 
-        return previousPointer;
+
+        while (prev != null) {
+            System.out.println(prev.val);
+            prev = prev.next;
+        }
+
+        //  return prev;
 
 
     }
@@ -146,7 +154,6 @@ public class LinkedListOperations {
 
     // 1 2 3 4
     // 4 3 2 1
-
 
 
 }
