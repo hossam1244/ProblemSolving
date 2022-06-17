@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class MyHashSet {
 
+    // TODO using array to built hashSet
     private int[] set;
 
     public MyHashSet() {
@@ -23,5 +24,7 @@ public class MyHashSet {
         return set[key] != -1 ? true : false;
     }
 
+
+    // TODO add a linked list example
 
 }
