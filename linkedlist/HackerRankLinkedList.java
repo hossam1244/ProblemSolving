@@ -1,9 +1,12 @@
 
 package linkedlist;
 
+import java.util.List;
+
 public class HackerRankLinkedList {
 
     static ListNode head = new ListNode();
+    static ListNode head2 = new ListNode();
 
 
     public static void main(String[] args) {
@@ -23,11 +26,34 @@ public class HackerRankLinkedList {
         node3.val = 4;
         node3.next = null;
 
-        ListNode newHead = deleteNode(head, 3);
-        while (newHead != null) {
-            System.out.println(newHead.val);
-            newHead = newHead.next;
-        }
+
+        ListNode node4 = new ListNode();
+        ListNode node5 = new ListNode();
+        ListNode node6 = new ListNode();
+
+        head2.val = 1;
+        head2.next = node4;
+
+        node4.val = 2;
+        node4.next = node5;
+
+        node5.val = 3;
+        node5.next = node6;
+
+        node6.val = 4;
+        node6.next = null;
+//         ListNode newHead = reverse(head);
+//        while (newHead != null) {
+//            System.out.println(newHead.val);
+//            newHead = newHead.next;
+//        }
+
+
+//        boolean compare = compareLists(head, head2);
+//        System.out.println(compare);
+
+                int nodeValue = getNodeFromTail(head, 2);
+        System.out.println(nodeValue);
 
     }
 
@@ -131,6 +157,110 @@ public class HackerRankLinkedList {
         return head;
 
     }
+
+
+    public static ListNode reverse(ListNode head) {
+        // Write your code here
+        // prev == null
+        // next == head.next
+
+        // 1 2 3 null
+
+
+        ListNode prev = null;
+
+        ListNode current = head;
+        while (current != null) {
+            ListNode nxt = current.next;
+            current.next = prev;
+            prev = current;
+            current = nxt;
+        }
+
+        return prev;
+
+
+    }
+
+
+    static boolean compareLists(ListNode head1, ListNode head2) {
+        if (head1 == null && head2 == null)
+            return true;
+
+
+        ListNode firstHead = head1;
+        ListNode secondHead = head2;
+        StringBuilder first = new StringBuilder();
+        StringBuilder second = new StringBuilder();
+
+        while (firstHead != null) {
+            first.append(firstHead.val);
+            firstHead = firstHead.next;
+        }
+
+        while (secondHead != null) {
+            second.append(secondHead.val);
+            secondHead = secondHead.next;
+        }
+
+
+
+        return first.toString().equals(second.toString());
+
+
+    }
+
+    static boolean compareListsImprovedSolution(ListNode head1, ListNode head2) {
+        if (head1 == null && head2 == null)
+            return true;
+
+
+        ListNode firstHead = head1;
+        ListNode secondHead = head2;
+
+
+        while (firstHead != null && secondHead != null && firstHead.val == secondHead.val) {
+          firstHead = firstHead.next;
+          secondHead = secondHead.next;
+        }
+
+
+
+
+
+        return firstHead == secondHead;
+
+
+    }
+
+    public static int getNodeFromTail(ListNode head, int positionFromTail) {
+        // Write your code here
+        ListNode prev = null;
+
+        ListNode current = head;
+        while (current != null) {
+            ListNode nxt = current.next;
+            current.next = prev;
+            prev = current;
+            current = nxt;
+        }
+
+        int position = 0;
+
+
+        while (prev != null) {
+
+            if (position == positionFromTail)
+                return prev.val;
+
+            position++;
+            prev = prev.next;
+        }
+
+        return 0;
+
+    }
+
 
 }
 
