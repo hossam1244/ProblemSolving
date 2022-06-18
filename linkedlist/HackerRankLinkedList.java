@@ -20,10 +20,10 @@ public class HackerRankLinkedList {
         node2.val = 3;
         node2.next = node3;
 
-        node3.val = 5;
+        node3.val = 4;
         node3.next = null;
 
-        ListNode newHead = insertNodeAtPosition(head, 4,3);
+        ListNode newHead = deleteNode(head, 3);
         while (newHead != null) {
             System.out.println(newHead.val);
             newHead = newHead.next;
@@ -91,6 +91,7 @@ public class HackerRankLinkedList {
         while (current != null) {
             currentPos++;
             if (currentPos == position) {
+
                 newNode.next = current.next;
                 current.next = newNode;
                 return head;
@@ -101,6 +102,33 @@ public class HackerRankLinkedList {
         return head;
 
 
+    }
+
+    public static ListNode deleteNode(ListNode head, int position) {
+        // Write your code here
+        // 1 2 3 4 null --> delete position 2 which is number 3
+        if (head == null)
+            return head;
+
+        if (position == 0)
+            return head.next;
+
+        int currentPos = 0;
+
+        // 1 2 3 5 null
+        ListNode current = head;
+        while (current != null) {
+            currentPos++;
+            // position == 3 which is 4
+            if (currentPos == position) {
+                System.out.println(current.val);
+                current.next = current.next.next;
+                return head;
+            }
+            current = current.next;
+        }
+
+        return head;
 
     }
 
