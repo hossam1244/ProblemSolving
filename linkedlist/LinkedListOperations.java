@@ -118,7 +118,7 @@ public class LinkedListOperations {
     }
 
 
-    static public void reverseListWithTwoPointers(ListNode head) {
+    static public ListNode reverseListWithTwoPointers(ListNode head) {
 //        if (head == null || head.next == null)
 //            return head;
 
@@ -141,12 +141,12 @@ public class LinkedListOperations {
         }
 
 
-        while (prev != null) {
-            System.out.println(prev.val);
-            prev = prev.next;
-        }
+//        while (prev != null) {
+//            System.out.println(prev.val);
+//            prev = prev.next;
+//        }
 
-        //  return prev;
+         return prev;
 
 
     }
@@ -159,19 +159,3 @@ public class LinkedListOperations {
 }
 
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-}
