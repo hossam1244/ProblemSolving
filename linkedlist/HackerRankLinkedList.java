@@ -11,19 +11,19 @@ public class HackerRankLinkedList {
         ListNode node2 = new ListNode();
         ListNode node3 = new ListNode();
 
-        head.val = 1;
-        head.next = node1;
+//        head.val = 1;
+//        head.next = node1;
+//
+//        node1.val = 2;
+//        node1.next = node2;
+//
+//        node2.val = 3;
+//        node2.next = node3;
+//
+//        node3.val = 4;
+//        node3.next = null;
 
-        node1.val = 2;
-        node1.next = node2;
-
-        node2.val = 3;
-        node2.next = node3;
-
-        node3.val = 4;
-        node3.next = null;
-
-        ListNode newHead = insertNodeAtTail(head, 5);
+        ListNode newHead = insertNodeAtHead(head, 5);
         while (newHead != null) {
             System.out.println(newHead.val);
             newHead = newHead.next;
@@ -61,6 +61,23 @@ public class HackerRankLinkedList {
 
 
         return head;
+
+    }
+
+
+    static ListNode insertNodeAtHead(ListNode head, int data) {
+        ListNode newNode = new ListNode();
+        newNode.val = data;
+        if (head == null) {
+            head = newNode;
+            return head;
+        }
+
+        newNode.next = head;
+        ListNode current = newNode;
+
+        return current;
+
 
     }
 
